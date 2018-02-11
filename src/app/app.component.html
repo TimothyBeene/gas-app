@@ -1,15 +1,26 @@
-<!-- enter odomitor miles -->
-<input
-  placeholder="Odomitor Miles"
-  [ngModel]="odomitorMiles"
->
-<!-- enter gas filled -->
-<input
-  placeholder="Gas Filled"
-  [ngModel]="gasFilled"
->
-<!-- enter price paid -->
-<input
-  placeholder="Price Paid"
-  [ngModel]="pricePaid"
->
+<form class="example-form">
+  <!-- enter Odometer miles -->
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Odometer Miles"
+      [ngModel]="odometerMiles"
+    >
+  </mat-form-field>
+  <!-- enter gas filled -->
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Gas Filled"
+      [ngModel]="gasFilled"
+    >
+  </mat-form-field>
+  <!-- enter price paid -->
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Price Paid"
+      [ngModel]="pricePaid"
+    >
+  </mat-form-field>
+</form>

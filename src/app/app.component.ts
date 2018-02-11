@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  odomitorMiles: number;
+  odometerMiles: number;
   gasFilled: number;
   pricePaid: number;
 }
