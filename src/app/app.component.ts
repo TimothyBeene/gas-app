@@ -1,3 +1,4 @@
+import { GasDataService } from './gas-data.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -9,6 +10,11 @@ export class AppComponent {
   odometerMiles: number;
   gasFilled: number;
   pricePaid: number;
+  gasData;
+
+  constructor(
+    gasDataService: GasDataService
+  ) {}
   onSubmit() {
     console.log('submit');
     // add data row to local storage
@@ -19,6 +25,7 @@ export class AppComponent {
       'pricePaid': this.pricePaid
     });
     localStorage.setItem('gasData', JSON.stringify(gasData));
+    this.gasData = gasData;
     this.odometerMiles = null;
     this.gasFilled = null;
     this.pricePaid = null;
