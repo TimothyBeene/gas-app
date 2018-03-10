@@ -28,5 +28,9 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 ## TODOs
-* Collect data from user via form
-* Store data in local storage
+<!-- * Collect data from user via form -->
+<!-- * Store data in local storage -->
+* Store data on Google sheets using user token
+* Refactor Oauth2
+    * Store key in environment file
+    * ...
