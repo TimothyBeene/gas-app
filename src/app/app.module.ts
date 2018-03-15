@@ -31,6 +31,25 @@ const MatModules = [
 import { AppComponent } from './app.component';
 import { AuthLandingComponent } from './auth-landing/auth-landing.component';
 
+import { NgGapiClientConfig, GoogleApiModule, NG_GAPI_CONFIG } from 'ng-gapi';
+import { UserService } from './user.service';
+import { HttpClientModule } from '@angular/common/http';
+
+const gapiClientConfig: NgGapiClientConfig = {
+  client_id: '594820868776-mu8p1nl25bqe0t212q94tgfu1v3r4dv1.apps.googleusercontent.com',
+  discoveryDocs: ['https://analyticsreporting.googleapis.com/$discovery/rest?version=v4'],
+  scope: [
+    'https://www.googleapis.com/auth/analytics.readonly',
+    'https://www.googleapis.com/auth/analytics',
+    'https://www.googleapis.com/auth/drive',
+    'https://www.googleapis.com/auth/drive.file',
+    'https://www.googleapis.com/auth/drive.readonly',
+    'https://www.googleapis.com/auth/spreadsheets',
+    'https://www.googleapis.com/auth/spreadsheets.readonly'
+  ].join(' '),
+  ux_mode: 'popup'
+};
+
 const appRoutes: Routes = [
   { path: 'google-auth-callback',  component: AuthLandingComponent }
 ];
@@ -41,15 +60,23 @@ const appRoutes: Routes = [
     AuthLandingComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ...MatModules,
     RouterModule.forRoot(appRoutes),
-    environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : []
+    environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : [],
+    GoogleApiModule.forRoot({
+      provide: NG_GAPI_CONFIG,
+      useValue: gapiClientConfig
+    })
   ],
-  providers: [GasDataService],
+  providers: [
+    GasDataService,
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
