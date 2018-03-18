@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "index": "/index.html",
+  "index": "/gas-app/index.html",
   "assetGroups": [
     {
       "name": "app",
