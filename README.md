@@ -30,7 +30,11 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## TODOs
 <!-- * Collect data from user via form -->
 <!-- * Store data in local storage -->
-* Store data on Google sheets using user token
+<!-- * Store data on Google sheets using user token -->
 * Refactor Oauth2
-    * Store key in environment file
-    * ...
+    * Store clientId in environment file
+    * provide new http service that injects token header
+    * have http service refresh token when needed
+* general error banner component
+    * take message and show to user
+    * hide after set timeout or on 'x' click

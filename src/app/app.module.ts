@@ -34,6 +34,7 @@ import { AuthLandingComponent } from './auth-landing/auth-landing.component';
 import { NgGapiClientConfig, GoogleApiModule, NG_GAPI_CONFIG } from 'ng-gapi';
 import { UserService } from './user.service';
 import { HttpClientModule } from '@angular/common/http';
+import { SheetsService } from './sheets.service';
 
 const gapiClientConfig: NgGapiClientConfig = {
   client_id: '594820868776-mu8p1nl25bqe0t212q94tgfu1v3r4dv1.apps.googleusercontent.com',
@@ -75,7 +76,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     GasDataService,
-    UserService
+    UserService,
+    SheetsService
   ],
   bootstrap: [AppComponent]
 })
