@@ -37,7 +37,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SheetsService } from './sheets.service';
 
 const gapiClientConfig: NgGapiClientConfig = {
-  client_id: '594820868776-mu8p1nl25bqe0t212q94tgfu1v3r4dv1.apps.googleusercontent.com',
+  client_id: environment.googleClientId,
   discoveryDocs: ['https://analyticsreporting.googleapis.com/$discovery/rest?version=v4'],
   scope: [
     'https://www.googleapis.com/auth/analytics.readonly',

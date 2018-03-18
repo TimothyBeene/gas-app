@@ -11,8 +11,11 @@
     "e2e": "ng e2e",
     "ngsw-config": "node_modules/.bin/ngsw-config dist src/ngsw-config.json",
     "ngsw-copy": "cp node_modules/@angular/service-worker/ngsw-worker.js dist/",
-    "build-prod-ngsw": "ng build --prod && npm run ngsw-config && npm run ngsw-copy",
-    "serve-prod-ngsw": "npm run build-prod-ngsw && http-server dist -p 8080"
+    "build-prod-ngsw": "ng build --prod --base-href /gas-app/ && npm run ngsw-config && npm run ngsw-copy",
+    "serve-prod-ngsw": "npm run build-prod-ngsw && http-server dist -p 8080",
+    "docs-copy": "rm -rf docs/* && cp -r dist/* docs",
+    "ghpages-push": "git commit docs/* -m 'build' && git push origin master",
+    "deploy": "npm run build-prod-ngsw && npm run docs-copy && npm run ghpages-push"
   },
   "private": true,
   "dependencies": {
