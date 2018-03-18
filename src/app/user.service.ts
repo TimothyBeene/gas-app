@@ -16,7 +16,7 @@ export class UserService {
   public getToken(): string {
     let token: string = sessionStorage.getItem(UserService.SESSION_STORAGE_KEY);
     if (!token) {
-      throw new Error("no token set , authentication required");
+      throw new Error('no token set , authentication required');
     }
     return sessionStorage.getItem(UserService.SESSION_STORAGE_KEY);
   }
