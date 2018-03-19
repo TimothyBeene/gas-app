@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { UserService } from './auth/user.service';
 import { Injectable } from '@angular/core';
+import 'rxjs/add/operator/map';
 
 import { environment } from '../environments/environment';
 
