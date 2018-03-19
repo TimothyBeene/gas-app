@@ -32,9 +32,10 @@ import { AppComponent } from './app.component';
 import { AuthLandingComponent } from './auth-landing/auth-landing.component';
 
 import { NgGapiClientConfig, GoogleApiModule, NG_GAPI_CONFIG } from 'ng-gapi';
-import { UserService } from './user.service';
-import { HttpClientModule } from '@angular/common/http';
+import { UserService } from './auth/user.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SheetsService } from './sheets.service';
+import { TokenInterceptor } from './auth/token.interceptor';
 
 const appRoutes: Routes = [
   { path: 'google-auth-callback',  component: AuthLandingComponent }
@@ -62,7 +63,12 @@ const appRoutes: Routes = [
   providers: [
     GasDataService,
     UserService,
-    SheetsService
+    SheetsService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

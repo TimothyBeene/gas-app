@@ -1,5 +1,5 @@
-import { UserService } from './user.service';
 import { HttpClient } from '@angular/common/http';
+import { UserService } from './auth/user.service';
 import { Injectable } from '@angular/core';
 
 import { environment } from '../environments/environment';
@@ -20,7 +20,6 @@ export class SheetsService {
       `${environment.googleSheetsBaseUrl}/${this.sheetId}/values/${data.range}:append`,
       data,
       {
-        headers: { 'Authorization': 'Bearer ' + this.userService.getToken() },
         params: { valueInputOption: 'USER_ENTERED' }
       }
     );
@@ -30,7 +29,6 @@ export class SheetsService {
     return this.http.get(
       `${environment.googleSheetsBaseUrl}/${this.sheetId}/values:batchGet`,
       {
-        headers: { 'Authorization': 'Bearer ' + this.userService.getToken() },
         params: {
           ranges: range,
           majorDimension: 'ROWS'
