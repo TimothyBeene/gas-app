@@ -36,21 +36,6 @@ import { UserService } from './user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SheetsService } from './sheets.service';
 
-const gapiClientConfig: NgGapiClientConfig = {
-  client_id: environment.googleClientId,
-  discoveryDocs: ['https://analyticsreporting.googleapis.com/$discovery/rest?version=v4'],
-  scope: [
-    'https://www.googleapis.com/auth/analytics.readonly',
-    'https://www.googleapis.com/auth/analytics',
-    'https://www.googleapis.com/auth/drive',
-    'https://www.googleapis.com/auth/drive.file',
-    'https://www.googleapis.com/auth/drive.readonly',
-    'https://www.googleapis.com/auth/spreadsheets',
-    'https://www.googleapis.com/auth/spreadsheets.readonly'
-  ].join(' '),
-  ux_mode: 'popup'
-};
-
 const appRoutes: Routes = [
   { path: 'google-auth-callback',  component: AuthLandingComponent }
 ];
@@ -71,7 +56,7 @@ const appRoutes: Routes = [
     environment.production ? ServiceWorkerModule.register('/ngsw-worker.js') : [],
     GoogleApiModule.forRoot({
       provide: NG_GAPI_CONFIG,
-      useValue: gapiClientConfig
+      useValue: environment.gapiClientConfig
     })
   ],
   providers: [
