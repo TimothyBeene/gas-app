@@ -1,5 +1,5 @@
 import { SheetsService } from './sheets.service';
-import { UserService } from './user.service';
+import { UserService } from './auth/user.service';
 import { Router } from '@angular/router';
 import { GasDataService } from './gas-data.service';
 import { Component, OnInit } from '@angular/core';
@@ -50,4 +50,3 @@ export class AppComponent implements OnInit {
     this.userService.signIn();
   }
 }
-
