@@ -36,15 +36,18 @@ import { UserService } from './auth/user.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SheetsService } from './sheets.service';
 import { TokenInterceptor } from './auth/token.interceptor';
+import { SetSheetComponent } from './set-sheet/set-sheet.component';
 
 const appRoutes: Routes = [
-  { path: 'google-auth-callback',  component: AuthLandingComponent }
+  { path: 'google-auth-callback',  component: AuthLandingComponent },
+  { path: 'set-sheet',  component: SetSheetComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthLandingComponent
+    AuthLandingComponent,
+    SetSheetComponent
   ],
   imports: [
     HttpClientModule,

@@ -18,8 +18,7 @@ export class SheetsService {
       this.sheetId = localStorage.getItem('sheetId' );
     } else {
       this.createSheet().subscribe(res => {
-        this.sheetId = res;
-        localStorage.setItem('sheetId', this.sheetId);
+        this.setSheetId(res);
       });
     }
   }
@@ -56,7 +55,6 @@ export class SheetsService {
       values: [[data.odometerMiles, data.gasFilled, data.pricePaid]]
     }).map( res => {
       gasData.push(data);
-      localStorage.setItem('gasData', JSON.stringify(gasData));
       return res;
     });
   }
@@ -90,11 +88,17 @@ export class SheetsService {
           }
         ]
       }
-    ).map( res => res['spreadsheetId'])
+    )
+    .map( res => res['spreadsheetId'])
     .map( id => {
       this.sheetId = id;
       return id;
     });
+  }
+
+  setSheetId(sheetId) {
+    this.sheetId = sheetId;
+    localStorage.setItem('sheetId', this.sheetId);
   }
 
 }

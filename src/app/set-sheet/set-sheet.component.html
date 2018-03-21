@@ -1,0 +1,11 @@
+<!-- <input placeholder="Past Sheet URL" (value)="setSheeId($event)" > -->
+
+<input matInput #rawSheetId
+  placeholder="Past Sheet URL"
+>
+
+<button
+  mat-raised-button
+  color="primary"
+  (click)="setSheetId(rawSheetId.value)"
+>Save</button>

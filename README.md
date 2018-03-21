@@ -28,13 +28,19 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 ## TODOs
-<!-- * Collect data from user via form -->
-<!-- * Store data in local storage -->
-<!-- * Store data on Google sheets using user token -->
-* Refactor Oauth2
-    * Store clientId in environment file
-    * provide new http service that injects token header
-    * have http service refresh token when needed
-* general error banner component
-    * take message and show to user
-    * hide after set timeout or on 'x' click
+* [x] Collect data from user via form
+* [x] Store data in local storage
+* [x] Store data on Google sheets using user token
+* [x] Refactor Oauth2
+    * [x] Store clientId in environment file
+    * [x] provide new http service that injects token header
+    * [x] have http service refresh token when needed
+* [ ] general error banner component
+    * [ ] take message and show to user
+    * [ ] hide after set timeout or on 'x' click
+* [ ] Fix service worker for /gas-app base url
+* [ ] Create spread sheet on user's google drive
+    * [ ] Add header row with field names
+    * [ ] give it hardcoded name
+    * [ ] look for hardcoded spreadsheet name
+* [ ] Load existing spread sheet from user's google drive
