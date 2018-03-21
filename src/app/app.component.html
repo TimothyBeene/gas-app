@@ -35,6 +35,6 @@
 </pre> -->
 
 <button mat-raised-button (click)="onAuthGoogle()">Init OAuth to Google</button>
-<a href="https://docs.google.com/spreadsheets/d/1HpD_49Y2d2vRfMRmXk8JrNX2LtUfNCIArdZO9fKXHLI/edit#gid=0">Data Sheet</a>
+<a href="https://docs.google.com/spreadsheets/d/{{this.sheetsService.sheetId}}/edit">Data Sheet</a>
 
 <router-outlet></router-outlet>

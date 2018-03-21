@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from './auth/user.service';
 import { Injectable } from '@angular/core';
@@ -8,13 +9,20 @@ import { environment } from '../environments/environment';
 @Injectable()
 export class SheetsService {
 
+  sheetId: string;
   constructor(
     private http: HttpClient,
     private userService: UserService
-  ) { }
-
-    // sheetId: string = '1HpD_49Y2d2vRfMRmXk8JrNX2LtUfNCIArdZO9fKXHLI';
-    sheetId = environment.sheetId;
+  ) {
+    if (localStorage.getItem('sheetId')) {
+      this.sheetId = localStorage.getItem('sheetId' );
+    } else {
+      this.createSheet().subscribe(res => {
+        this.sheetId = res;
+        localStorage.setItem('sheetId', this.sheetId);
+      });
+    }
+  }
 
   saveDataToSheet(data: {range: string, majorDimension: string, values: [number[]]}) {
     return this.http.post(
@@ -50,6 +58,42 @@ export class SheetsService {
       gasData.push(data);
       localStorage.setItem('gasData', JSON.stringify(gasData));
       return res;
+    });
+  }
+
+
+  createSheet(): Observable<string> {
+    const sheetTitle = 'Fuel Tracker - Fill Data';
+    return this.http.post(
+      environment.googleSheetsBaseUrl,
+      {
+        properties: {
+          title: sheetTitle
+        },
+        sheets: [
+          {
+            properties: {
+              gridProperties: {
+                frozenRowCount: 1
+              }
+            },
+            data: {
+              rowData: {
+                values: [
+                  {userEnteredValue: {stringValue: 'Date'}},
+                  {userEnteredValue: {stringValue: 'Odometer Miles'}},
+                  {userEnteredValue: {stringValue: 'Gas Filled'}},
+                  {userEnteredValue: {stringValue: 'Price Paid'}}
+                ]
+              }
+            }
+          }
+        ]
+      }
+    ).map( res => res['spreadsheetId'])
+    .map( id => {
+      this.sheetId = id;
+      return id;
     });
   }
 
