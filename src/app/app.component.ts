@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   gasFilled: number;
   pricePaid: number;
   gasData;
+  sheetId: string;
 
   constructor(
     private router: Router,
@@ -20,7 +21,9 @@ export class AppComponent implements OnInit {
     private sheetsService: SheetsService
   ) {}
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.sheetId = this.sheetsService.sheetId;
+  }
 
   onSubmit() {
     console.log('submit');
