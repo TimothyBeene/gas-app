@@ -1,41 +1,5 @@
-<!-- enter Odometer miles -->
-<mat-form-field>
-  <input
-    matInput
-    type="tel"
-    placeholder="Odometer Miles"
-    [(ngModel)]="odometerMiles"
-  >
-</mat-form-field>
-<!-- enter gas filled -->
-<mat-form-field>
-  <input
-    matInput
-    type="tel"
-    placeholder="Gas Filled"
-    [(ngModel)]="gasFilled"
-  >
-</mat-form-field>
-<!-- enter price paid -->
-<mat-form-field>
-  <input
-    matInput
-    type="tel"
-    placeholder="Price Paid"
-    [(ngModel)]="pricePaid"
-  >
-</mat-form-field>
-<button
-  mat-raised-button
-  color="primary"
-  (click)="onSubmit()"
->Submit</button>
-<!-- <pre>
-  {{ gasData | json }}
-</pre> -->
-
+<a mat-raised-button [routerLink]="['fuel-data']">Enter Fuel Data</a>
+<a mat-raised-button [routerLink]="['set-sheet']">Configure Sheet</a>
 <button mat-raised-button (click)="onAuthGoogle()">Init OAuth to Google</button>
-<a href="https://docs.google.com/spreadsheets/d/{{sheetId}}/edit">Data Sheet</a>
-
-<a [routerLink]="['set-sheet']">Set Sheet Url</a>
+<br/>
 <router-outlet></router-outlet>

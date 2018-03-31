@@ -37,8 +37,10 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SheetsService } from './sheets.service';
 import { TokenInterceptor } from './auth/token.interceptor';
 import { SetSheetComponent } from './set-sheet/set-sheet.component';
+import { FuelDataComponent } from './fuel-data/fuel-data.component';
 
 const appRoutes: Routes = [
+  { path: 'fuel-data',  component: FuelDataComponent },
   { path: 'google-auth-callback',  component: AuthLandingComponent },
   { path: 'set-sheet',  component: SetSheetComponent }
 ];
@@ -47,7 +49,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     AuthLandingComponent,
-    SetSheetComponent
+    SetSheetComponent,
+    FuelDataComponent
   ],
   imports: [
     HttpClientModule,

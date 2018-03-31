@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class SetSheetComponent implements OnInit {
 
   constructor(
-    private sheetsService: SheetsService
+    public sheetsService: SheetsService
   ) { }
 
   ngOnInit() {

@@ -5,21 +5,26 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 
 import { environment } from '../environments/environment';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class SheetsService {
 
-  sheetId: string;
+  private sheetId: string;
+  private internalSheetId$: BehaviorSubject<string>;
+  public sheetId$: Observable<string>;
   constructor(
     private http: HttpClient,
     private userService: UserService
   ) {
+    this.internalSheetId$ = <BehaviorSubject<string>> new BehaviorSubject('');
+    this.sheetId$ = this.internalSheetId$.asObservable();
+    this.sheetId$.subscribe( id => this.sheetId = id);
+
     if (localStorage.getItem('sheetId')) {
-      this.sheetId = localStorage.getItem('sheetId' );
+      this.internalSheetId$.next(localStorage.getItem('sheetId'));
     } else {
-      this.createSheet().subscribe(res => {
-        this.setSheetId(res);
-      });
+      this.createSheet().subscribe();
     }
   }
 
@@ -78,7 +83,7 @@ export class SheetsService {
             data: {
               rowData: {
                 values: [
-                  {userEnteredValue: {stringValue: 'Date'}},
+                  // {userEnteredValue: {stringValue: 'Date'}},
                   {userEnteredValue: {stringValue: 'Odometer Miles'}},
                   {userEnteredValue: {stringValue: 'Gas Filled'}},
                   {userEnteredValue: {stringValue: 'Price Paid'}}
@@ -90,15 +95,13 @@ export class SheetsService {
       }
     )
     .map( res => res['spreadsheetId'])
-    .map( id => {
-      this.sheetId = id;
-      return id;
-    });
+    .map(this.setSheetId.bind(this));
   }
 
   setSheetId(sheetId) {
-    this.sheetId = sheetId;
-    localStorage.setItem('sheetId', this.sheetId);
+    this.internalSheetId$.next(sheetId);
+    localStorage.setItem('sheetId', sheetId);
+    return sheetId;
   }
 
 }

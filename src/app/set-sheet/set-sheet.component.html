@@ -1,11 +1,15 @@
 <!-- <input placeholder="Past Sheet URL" (value)="setSheeId($event)" > -->
 
-<input matInput #rawSheetId
-  placeholder="Past Sheet URL"
->
 
-<button
-  mat-raised-button
-  color="primary"
+<mat-form-field>
+  <input matInput #rawSheetId
+    placeholder="Past Sheet URL"
+  >
+</mat-form-field>
+
+<button mat-raised-button color="primary"
   (click)="setSheetId(rawSheetId.value)"
 >Save</button>
+<button mat-raised-button color="secondary"
+  (click)="sheetsService.createSheet().subscribe()"
+>Create New</button>
