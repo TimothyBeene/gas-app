@@ -44,3 +44,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     * [ ] give it hardcoded name
     * [ ] look for hardcoded spreadsheet name
 * [ ] Load existing spread sheet from user's google drive
+* [ ] Ui design
+    * [ ] Move fuel entry to own component
+        * [ ] Mobile: put each input on own line
+        * [ ] 
+    * [ ] add navigation tabs to top for [fuel] [graph] [configure]
+* [ ] Make sheetId an Observable
