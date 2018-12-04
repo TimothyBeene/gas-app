@@ -46,7 +46,8 @@ import { FuelDataComponent } from './fuel-data/fuel-data.component';
 const appRoutes: Routes = [
   { path: 'fuel-data',  component: FuelDataComponent },
   { path: 'google-auth-callback',  component: AuthLandingComponent },
-  { path: 'set-sheet',  component: SetSheetComponent }
+  { path: 'set-sheet',  component: SetSheetComponent },
+  { path: '',  redirectTo: '/fuel-data', pathMatch: 'full' }
 ];
 
 @NgModule({
