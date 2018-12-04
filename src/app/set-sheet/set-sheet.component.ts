@@ -27,4 +27,10 @@ export class SetSheetComponent implements OnInit {
     this.sheetsService.setSheetId(sheetId);
   }
 
+  createNewSheet() {
+    this.sheetsService.createSheet().subscribe( () => {
+      this.sheetsService.formatSheet().subscribe();
+    });
+  }
+
 }
