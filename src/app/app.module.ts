@@ -15,7 +15,9 @@ import {
   MatChipsModule,
   MatFormFieldModule,
   MatSelectModule,
-  MatAutocompleteModule
+  MatAutocompleteModule,
+  MatTabsModule,
+  MatCardModule
 } from '@angular/material';
 const MatModules = [
   MatInputModule,
@@ -25,7 +27,9 @@ const MatModules = [
   MatChipsModule,
   MatFormFieldModule,
   MatSelectModule,
-  MatAutocompleteModule
+  MatAutocompleteModule,
+  MatTabsModule,
+  MatCardModule
 ];
 
 import { AppComponent } from './app.component';

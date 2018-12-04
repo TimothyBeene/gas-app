@@ -1,27 +1,29 @@
+<mat-card-title>Enter Fuel Data</mat-card-title>
 <!-- enter Odometer miles -->
 <mat-form-field>
   <input
     matInput
-    type="tel"
-    placeholder="Odometer Miles"
+    type="number"
+    pattern="[0-9]*\.?[0-9]*"
+    placeholder="Miles"
     [(ngModel)]="gasData.odometerMiles"
   >
 </mat-form-field>
-<!-- enter gas filled -->
 <mat-form-field>
   <input
     matInput
-    type="tel"
-    placeholder="Gas Filled"
+    type="number"
+    pattern="[0-9]*\.?[0-9]*"
+    placeholder="Volume"
     [(ngModel)]="gasData.gasFilled"
   >
 </mat-form-field>
-<!-- enter price paid -->
 <mat-form-field>
   <input
     matInput
-    type="tel"
-    placeholder="Price Paid"
+    type="number"
+    pattern="[0-9]*\.?[0-9]*"
+    placeholder="Total"
     [(ngModel)]="gasData.pricePaid"
   >
 </mat-form-field>
@@ -34,4 +36,4 @@
   {{ gasData | json }}
 </pre> -->
 
-<a href="https://docs.google.com/spreadsheets/d/{{this.sheetsService.sheetId$ | async}}/edit">Data Sheet</a>
+<a mat-raised-button href="https://docs.google.com/spreadsheets/d/{{this.sheetsService.sheetId$ | async}}/edit">Data Sheet</a>
