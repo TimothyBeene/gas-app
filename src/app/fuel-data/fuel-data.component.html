@@ -7,6 +7,7 @@
     pattern="[0-9]*"
     placeholder="Miles"
     [(ngModel)]="gasData.odometerMiles"
+    min="1"
   >
 </mat-form-field>
 <mat-form-field>
@@ -16,6 +17,7 @@
     pattern="[0-9]*"
     placeholder="Volume"
     [(ngModel)]="gasData.gasFilled"
+    min="1"
   >
 </mat-form-field>
 <mat-form-field>
@@ -25,6 +27,7 @@
     pattern="[0-9]*"
     placeholder="Total"
     [(ngModel)]="gasData.pricePaid"
+    min="1"
   >
 </mat-form-field>
 <button
