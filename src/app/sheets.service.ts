@@ -10,6 +10,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 @Injectable()
 export class SheetsService {
 
+  private sheetData: any;
   private sheetId: string;
   private internalSheetId$: BehaviorSubject<string>;
   public sheetId$: Observable<string>;
@@ -24,7 +25,7 @@ export class SheetsService {
     if (localStorage.getItem('sheetId')) {
       this.internalSheetId$.next(localStorage.getItem('sheetId'));
     } else {
-      this.createSheet().subscribe();
+      this.createSheet().subscribe(this.formatSheet);
     }
   }
 
@@ -57,7 +58,7 @@ export class SheetsService {
     return this.saveDataToSheet({
       range: 'A1:C1',
       majorDimension: 'ROWS',
-      values: [[data.odometerMiles, data.gasFilled, data.pricePaid]]
+      values: [[data.odometerMiles, data.gasFilled, data.pricePaid, new Date()]]
     }).map( res => {
       gasData.push(data);
       return res;
@@ -83,10 +84,10 @@ export class SheetsService {
             data: {
               rowData: {
                 values: [
-                  // {userEnteredValue: {stringValue: 'Date'}},
                   {userEnteredValue: {stringValue: 'Odometer Miles'}},
                   {userEnteredValue: {stringValue: 'Gas Filled'}},
-                  {userEnteredValue: {stringValue: 'Price Paid'}}
+                  {userEnteredValue: {stringValue: 'Price Paid'}},
+                  {userEnteredValue: {stringValue: 'Date'}}
                 ]
               }
             }
@@ -94,14 +95,49 @@ export class SheetsService {
         ]
       }
     )
-    .map( res => res['spreadsheetId'])
+    .map(this.extractData.bind(this))
     .map(this.setSheetId.bind(this));
+  }
+
+  formatSheet(): Observable<any> {
+    return this.http.post(
+      `${environment.googleSheetsBaseUrl}/${this.sheetId}:batchUpdate`,
+      {
+        requests: [
+          {
+            repeatCell: {
+              range: {
+                sheetId: this.sheetData.sheets[0].properties.sheetId,
+                // startRowIndex: 4,
+                // endRowIndex: 5,
+                startColumnIndex: 4,
+                endColumnIndex: 5
+              },
+              cell: {
+                userEnteredFormat: {
+                  numberFormat: {
+                    type: 'DATE',
+                    pattern: 'hh:mm:ss am/pm, ddd mmm dd yyyy'
+                  }
+                }
+              },
+              fields: 'userEnteredFormat.numberFormat'
+            }
+          }
+        ]
+      }
+    );
   }
 
   setSheetId(sheetId) {
     this.internalSheetId$.next(sheetId);
     localStorage.setItem('sheetId', sheetId);
     return sheetId;
+  }
+
+  extractData(sheetData: any) {
+    this.sheetData = sheetData;
+    return sheetData.spreadsheetId;
   }
 
 }
