@@ -43,13 +43,15 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     * [ ] hide after set timeout or on 'x' click
 * [ ] Fix service worker for /gas-app base url
 * [ ] Create spread sheet on user's google drive
-    * [ ] Add header row with field names
-    * [ ] give it hardcoded name
+    * [x] Add header row with field names
+    * [x] give it hardcoded name
     * [ ] look for hardcoded spreadsheet name
 * [ ] Load existing spread sheet from user's google drive
 * [ ] Ui design
     * [ ] Move fuel entry to own component
         * [ ] Mobile: put each input on own line
-        * [ ] 
     * [ ] add navigation tabs to top for [fuel] [graph] [configure]
-* [ ] Make sheetId an Observable
+* [x] Make sheetId as an Observable
+* [ ] Add timestamp to entry
+    * [ ] Send data
+    * [ ] Format cell as datetimeformat
