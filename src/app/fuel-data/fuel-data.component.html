@@ -36,4 +36,4 @@
   {{ gasData | json }}
 </pre> -->
 
-<a mat-raised-button href="https://docs.google.com/spreadsheets/d/{{this.sheetsService.sheetId$ | async}}/edit">Data Sheet</a>
+<a [disabled]="!(this.sheetsService.sheetId$ | async)" mat-raised-button href="https://docs.google.com/spreadsheets/d/{{this.sheetsService.sheetId$ | async}}/edit">Data Sheet</a>
