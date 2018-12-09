@@ -17,7 +17,8 @@
     "serve-prod-ngsw": "npm run build-prod-ngsw && http-server dist -p 8080",
     "docs-copy": "cp -fr dist/* docs",
     "ghpages-push": "git commit docs/* -m 'build' && git push origin master",
-    "deploy": "run-s build-github-ngsw docs-copy ghpages-push"
+    "build-github" : "run-s build-github-ngsw docs-copy",
+    "deploy": "npm run ghpages-push"
   },
   "private": true,
   "dependencies": {
