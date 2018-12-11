@@ -17,7 +17,8 @@ import {
   MatSelectModule,
   MatAutocompleteModule,
   MatTabsModule,
-  MatCardModule
+  MatCardModule,
+  MatIconModule
 } from '@angular/material';
 const MatModules = [
   MatInputModule,
@@ -29,7 +30,8 @@ const MatModules = [
   MatSelectModule,
   MatAutocompleteModule,
   MatTabsModule,
-  MatCardModule
+  MatCardModule,
+  MatIconModule
 ];
 
 import { AppComponent } from './app.component';
@@ -42,6 +44,7 @@ import { SheetsService } from './sheets.service';
 import { TokenInterceptor } from './auth/token.interceptor';
 import { SetSheetComponent } from './set-sheet/set-sheet.component';
 import { FuelDataComponent } from './fuel-data/fuel-data.component';
+import { NumberInputDirective } from './directives/number-input.directive';
 
 const appRoutes: Routes = [
   { path: 'fuel-data',  component: FuelDataComponent },
@@ -55,7 +58,8 @@ const appRoutes: Routes = [
     AppComponent,
     AuthLandingComponent,
     SetSheetComponent,
-    FuelDataComponent
+    FuelDataComponent,
+    NumberInputDirective
   ],
   imports: [
     HttpClientModule,
