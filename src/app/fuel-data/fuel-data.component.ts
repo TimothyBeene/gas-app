@@ -39,28 +39,4 @@ export class FuelDataComponent implements OnInit {
 
   }
 
-  checkPattern(input, model) {
-    console.log('checkPattern', input.value, model);
-    let tempValue = input.value;
-    tempValue = tempValue.replace(/\./g, '');
-    if ( tempValue.length > 2 ) {
-      const parsed = /(\d*)(\d\d)$/.exec(tempValue);
-      tempValue = parsed[1] + '.' + parsed[2];
-    }
-    input.value = tempValue;
-  }
-
-  noPeriods(event: KeyboardEvent) {
-    if (/^[a-z]|[A-Z]|\.|\+|-|\*|\\|=|'|"|`|~| |_|,|<|>|\?|-$/.test(event.key)) {
-      console.log('noPeriods', event.key);
-      event.preventDefault();
-      event.stopPropagation();
-      return;
-    }
-  }
-
-  blurThis(element) {
-    return false;
-  }
-
 }

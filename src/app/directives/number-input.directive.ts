@@ -22,7 +22,7 @@ export class NumberInputDirective {
 
   @HostListener('keydown', ['$event'])
   noPeriods(event: KeyboardEvent) {
-    if (/^[a-z]|[A-Z]|\.|\+|-|\*|\\|=|'|"|`|~| |_|,|<|>|\?|-$/.test(event.key)) {
+    if (/^[a-z|A-Z|\.|\+|-|\*|\\|=|'|"|`|~| |_|,|<|>|\?|-]$/.test(event.key)) {
       console.log('noPeriods', event.key);
       event.preventDefault();
       event.stopPropagation();
