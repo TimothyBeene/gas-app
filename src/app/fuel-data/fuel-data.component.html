@@ -11,6 +11,7 @@
     placeholder="Odometer Reading"
     [(ngModel)]="gasData.odometerMiles"
     min="1"
+    autocomplete="off"
   >
 </mat-form-field>
 <mat-form-field>
@@ -22,6 +23,7 @@
     placeholder="Fuel Volume"
     [(ngModel)]="gasData.gasFilled"
     min="1"
+    autocomplete="off"
   >
 </mat-form-field>
 <mat-form-field>
@@ -39,6 +41,7 @@
     [(ngModel)]="gasData.pricePaid"
     appNumberInput
     min="1"
+    autocomplete="off"
   >
 </mat-form-field>
 <button
