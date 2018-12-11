@@ -15,10 +15,10 @@
     "build-github-ngsw": "ng build --prod --base-href /gas-app/ && npm run ngsw-config && npm run ngsw-copy",
     "build-prod-ngsw": "ng build --prod && npm run ngsw-config && npm run ngsw-copy",
     "serve-prod-ngsw": "npm run build-prod-ngsw && http-server dist -p 8080",
-    "docs-copy": "cp -fr dist/* docs",
-    "ghpages-push": "git commit docs/* -m 'build' && git push origin master",
+    "docs-copy": "rm -rf docs/* && cp -fr dist/* docs",
+    "ghpages-push": "git add docs/* && git commit -m 'build' && git push origin master",
     "build-github" : "run-s build-github-ngsw docs-copy",
-    "deploy": "npm run ghpages-push"
+    "deploy": "run-s build-github-ngsw docs-copy ghpages-push"
   },
   "private": true,
   "dependencies": {
