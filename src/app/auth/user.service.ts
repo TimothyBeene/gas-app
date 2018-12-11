@@ -16,7 +16,6 @@ export class UserService {
   public getToken(): string {
     let token: string = sessionStorage.getItem(UserService.SESSION_STORAGE_KEY);
     if (!token) {
-      console.log('no Token: Init signIn');
       this.signIn();
       // throw new Error('no token set , authentication required');
     }

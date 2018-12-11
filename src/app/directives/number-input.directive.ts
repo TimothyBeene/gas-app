@@ -10,7 +10,6 @@ export class NumberInputDirective {
   @HostListener('input', ['$event'])
   checkPattern(event) {
     let input = event.target;
-    console.log('checkPattern', input.value);
     let tempValue = input.value;
     tempValue = tempValue.replace(/\./g, '');
     if ( tempValue.length > 2 ) {
@@ -23,7 +22,6 @@ export class NumberInputDirective {
   @HostListener('keydown', ['$event'])
   noPeriods(event: KeyboardEvent) {
     if (/^[a-z|A-Z|\.|\+|-|\*|\\|=|'|"|`|~| |_|,|<|>|\?|-]$/.test(event.key)) {
-      console.log('noPeriods', event.key);
       event.preventDefault();
       event.stopPropagation();
       return;

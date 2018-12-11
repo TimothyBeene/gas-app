@@ -22,7 +22,6 @@ export class FuelDataComponent implements OnInit {
 
   ngOnInit() {
     this.sheetsService.sheetId$.subscribe( id => {
-      console.log(id);
     });
   }
 

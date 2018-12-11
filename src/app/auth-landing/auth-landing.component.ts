@@ -17,7 +17,6 @@ export class AuthLandingComponent implements OnInit {
   ngOnInit() {
     // get params from activated route
     this.route.queryParams.subscribe( params => {
-      console.log(params.code);
       if (params && params.code ) {
         localStorage.setItem('googleKey', params.code);
       }
