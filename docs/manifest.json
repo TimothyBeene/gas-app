@@ -3,12 +3,12 @@
     "name": "Fuel Tracker",
     "icons": [
         {
-            "src": "assets/icons/gas-station-48dp.png",
+            "src": "assets/icons/gas-station-192x192.png",
             "type": "image/png",
             "sizes": "192x192"
         },
         {
-            "src": "assets/icons/gas-station-48dp.png",
+            "src": "assets/icons/gas-station-512x512.png",
             "type": "image/png",
             "sizes": "512x512"
         }
