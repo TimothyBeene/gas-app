@@ -18,7 +18,10 @@ import {
   MatAutocompleteModule,
   MatTabsModule,
   MatCardModule,
-  MatIconModule
+  MatIconModule,
+  MatToolbarModule,
+  MatSidenavModule,
+  MatListModule
 } from '@angular/material';
 const MatModules = [
   MatInputModule,
@@ -31,7 +34,10 @@ const MatModules = [
   MatAutocompleteModule,
   MatTabsModule,
   MatCardModule,
-  MatIconModule
+  MatIconModule,
+  MatToolbarModule,
+  MatSidenavModule,
+  MatListModule
 ];
 
 import { AppComponent } from './app.component';

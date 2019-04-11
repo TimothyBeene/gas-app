@@ -1,10 +1,29 @@
-<div class="navigation">
-    <a mat-raised-button [routerLink]="['fuel-data']">Enter Fuel Data</a>
-    <a mat-raised-button [routerLink]="['set-sheet']">Configure</a>
-    <!-- <button mat-raised-button (click)="onAuthGoogle()">Login</button> -->
-</div>
-
-<br/>
-<mat-card>
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="toggleSideNav()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="fill-remaining-space">Fuel Tracker</span>
+</mat-toolbar>
+<mat-drawer-container>
+  <mat-drawer mode="side" [(opened)]="isSideNavOpen">
+    <mat-nav-list>
+      <mat-list-item>
+        <!-- <mat-icon>local_gas_station</mat-icon> -->
+        <a matLine href="#/fuel-data">Enter Fuel Data</a>
+      </mat-list-item>
+      <mat-list-item>
+        <!-- <mat-icon>settings</mat-icon> -->
+        <a matLine href="#/set-sheet">Configure</a>
+      </mat-list-item>
+      <mat-list-item *ngIf="!(userService.isLoggedIn$ | async)">
+        <span matLine (click)="onAuthGoogle()">Login</span>
+      </mat-list-item>
+      <mat-list-item *ngIf="userService.isLoggedIn$ | async">
+        <span matLine (click)="logout()">Logout</span>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content>
     <router-outlet></router-outlet>
-</mat-card>
+  </mat-drawer-content>
+</mat-drawer-container>

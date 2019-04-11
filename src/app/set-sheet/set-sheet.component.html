@@ -1,15 +1,19 @@
 <!-- <input placeholder="Past Sheet URL" (value)="setSheeId($event)" > -->
-
-<mat-card-title>Configure</mat-card-title>
-<mat-form-field>
-  <input matInput #rawSheetId
-    placeholder="Paste Sheet URL"
-  >
-</mat-form-field>
-
-<button mat-raised-button color="primary"
-  (click)="setSheetId(rawSheetId.value)"
->Save</button>
-<button mat-raised-button color="secondary"
-  (click)="createNewSheet()"
->Create New</button>
+<mat-card>
+  <mat-card-title>Configure</mat-card-title>
+  <mat-card-content>
+    <mat-form-field>
+      <input matInput #rawSheetId
+        placeholder="Paste Sheet URL"
+      >
+    </mat-form-field>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary"
+      (click)="setSheetId(rawSheetId.value)"
+    >Save</button>
+    <button mat-raised-button color="secondary"
+      (click)="createNewSheet()"
+    >Create New</button>
+  </mat-card-actions>  
+</mat-card>

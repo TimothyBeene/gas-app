@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --base-href /gas-app/ --host 0.0.0.0",
+    "start": "ng serve --base-href /gas-app/ --host 0.0.0.0 --aot",
     "dev": "ng serve",
     "build": "ng build",
     "test": "ng test",
@@ -17,7 +17,7 @@
     "serve-prod-ngsw": "npm run build-prod-ngsw && http-server dist -p 4200",
     "docs-copy": "rm -rf docs/* && cp -fr dist/* docs",
     "ghpages-push": "git add docs/* && git commit -m 'build' && git push origin master",
-    "build-github" : "run-s build-github-ngsw docs-copy",
+    "build-github": "run-s build-github-ngsw docs-copy",
     "deploy": "run-s build-github-ngsw docs-copy ghpages-push"
   },
   "private": true,
