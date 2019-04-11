@@ -1,10 +1,11 @@
-import { Directive, HostListener } from '@angular/core';
+import { Directive, HostListener, Input } from '@angular/core';
 
 @Directive({
   selector: '[appNumberInput]'
 })
 export class NumberInputDirective {
 
+  @Input() numberPattern: string = '(\\d*)(\\d\\d)$';
   constructor() { }
 
   @HostListener('input', ['$event'])
@@ -12,8 +13,9 @@ export class NumberInputDirective {
     let input = event.target;
     let tempValue = input.value;
     tempValue = tempValue.replace(/\./g, '');
-    if ( tempValue.length > 2 ) {
-      const parsed = /(\d*)(\d\d)$/.exec(tempValue);
+    const regex = new RegExp(this.numberPattern);
+    const parsed = regex.exec(tempValue);
+    if ( parsed && parsed[2] ) {
       tempValue = parsed[1] + '.' + parsed[2];
     }
     input.value = tempValue;
