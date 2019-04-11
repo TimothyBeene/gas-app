@@ -1,18 +1,18 @@
 {
   "configVersion": 1,
-  "index": "/index.html",
+  "index": "/gas-app/index.html",
   "assetGroups": [
     {
       "name": "app",
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "urls": [
-        "/favicon.ico",
-        "/index.html",
-        "/inline.318b50c57b4eba3d437b.bundle.js",
-        "/main.476fa624cc33df5c5fc1.bundle.js",
-        "/polyfills.3278d5562f97c4d18708.bundle.js",
-        "/styles.578d311720f0ad0c5562.bundle.css"
+        "/gas-app/favicon.ico",
+        "/gas-app/index.html",
+        "/gas-app/inline.318b50c57b4eba3d437b.bundle.js",
+        "/gas-app/main.8d0c2b86c53f5fb679cb.bundle.js",
+        "/gas-app/polyfills.3278d5562f97c4d18708.bundle.js",
+        "/gas-app/styles.578d311720f0ad0c5562.bundle.css"
       ],
       "patterns": []
     },
@@ -21,23 +21,23 @@
       "installMode": "lazy",
       "updateMode": "prefetch",
       "urls": [
-        "/assets/icons/gas-station-192x192.png",
-        "/assets/icons/gas-station-48dp.png",
-        "/assets/icons/gas-station-512x512.png"
+        "/gas-app/assets/icons/gas-station-192x192.png",
+        "/gas-app/assets/icons/gas-station-48dp.png",
+        "/gas-app/assets/icons/gas-station-512x512.png"
       ],
       "patterns": []
     }
   ],
   "dataGroups": [],
   "hashTable": {
-    "/inline.318b50c57b4eba3d437b.bundle.js": "998c6060446975e566fd17509558ddc68d72eec3",
-    "/assets/icons/gas-station-192x192.png": "c77cc25dcf4e221728352c7b5a1dfbf57cc72993",
-    "/main.476fa624cc33df5c5fc1.bundle.js": "9c179b84ae58096d1aa106be9128b1aa929ba110",
-    "/assets/icons/gas-station-48dp.png": "9d7235fe48d6647d68e3cf49bc76c1afecc7ee41",
-    "/polyfills.3278d5562f97c4d18708.bundle.js": "3ff31a977b3f6596bce681cd4352c5abe935cf9f",
-    "/assets/icons/gas-station-512x512.png": "b55ef2826f56623bd9ca0d962481b4a7d09c092c",
-    "/styles.578d311720f0ad0c5562.bundle.css": "ec77b934ac2c371ad4b23c4ce26040d32151246f",
-    "/favicon.ico": "0906f689d0947679f2a106820f0f01c669c2a415",
-    "/index.html": "a38f3cf7f3f2da2eda5ea2ae4b2d05ae9c99a30c"
+    "/gas-app/inline.318b50c57b4eba3d437b.bundle.js": "998c6060446975e566fd17509558ddc68d72eec3",
+    "/gas-app/assets/icons/gas-station-192x192.png": "c77cc25dcf4e221728352c7b5a1dfbf57cc72993",
+    "/gas-app/main.8d0c2b86c53f5fb679cb.bundle.js": "58fe9a75d1c19eae047bbe2d35014053b1e1bbd2",
+    "/gas-app/assets/icons/gas-station-48dp.png": "9d7235fe48d6647d68e3cf49bc76c1afecc7ee41",
+    "/gas-app/polyfills.3278d5562f97c4d18708.bundle.js": "3ff31a977b3f6596bce681cd4352c5abe935cf9f",
+    "/gas-app/assets/icons/gas-station-512x512.png": "b55ef2826f56623bd9ca0d962481b4a7d09c092c",
+    "/gas-app/styles.578d311720f0ad0c5562.bundle.css": "ec77b934ac2c371ad4b23c4ce26040d32151246f",
+    "/gas-app/favicon.ico": "0906f689d0947679f2a106820f0f01c669c2a415",
+    "/gas-app/index.html": "9e100016593ec8e4ce91cafe65ee8754448dbf8f"
   }
 }
