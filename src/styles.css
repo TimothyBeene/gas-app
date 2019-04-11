@@ -13,3 +13,6 @@ input[type="number"]::-webkit-inner-spin-button {
 body {
     margin: 0px;
 }
+mat-card {
+    margin: 16px;
+}
