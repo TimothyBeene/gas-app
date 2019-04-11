@@ -57,8 +57,6 @@
       color="primary"
       (click)="onSubmit()"
     >Submit</button>
-    
-    <a [disabled]="!(this.sheetsService.sheetId$ | async)" mat-raised-button href="https://docs.google.com/spreadsheets/d/{{this.sheetsService.sheetId$ | async}}/edit">Data Sheet</a>
   </mat-card-actions>
   <!-- <pre>{{ gasData | json }}</pre> -->
 </mat-card>

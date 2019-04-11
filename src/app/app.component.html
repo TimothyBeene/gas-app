@@ -18,12 +18,16 @@
       <mat-list-item *ngIf="!(userService.isLoggedIn$ | async)">
         <span matLine (click)="onAuthGoogle()">Login</span>
       </mat-list-item>
+      <mat-list-item *ngIf="sheetsService.sheetId$ | async">
+        <mat-icon>open_in_new</mat-icon>
+        <a matLine href="https://docs.google.com/spreadsheets/d/{{sheetsService.sheetId$ | async}}/edit">Data Sheet</a>
+      </mat-list-item>
       <mat-list-item *ngIf="userService.isLoggedIn$ | async">
         <span matLine (click)="logout()">Logout</span>
       </mat-list-item>
     </mat-nav-list>
   </mat-drawer>
-  <mat-drawer-content>
+  <mat-drawer-content (touch)="closeSideNav()">
     <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>

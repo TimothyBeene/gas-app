@@ -16,13 +16,14 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     public userService: UserService,
+    public sheetsService: SheetsService
   ) {}
 
   ngOnInit() {
     this.isSideNavOpen = false;
     this.router.events.pipe(
       filter(event => event instanceof NavigationStart)
-    ).subscribe( _ => this. isSideNavOpen = false);
+    ).subscribe( _ => this.closeSideNav());
   }
 
   onAuthGoogle() {
@@ -33,5 +34,8 @@ export class AppComponent implements OnInit {
   }
   toggleSideNav() {
     this.isSideNavOpen = !this.isSideNavOpen;
+  }
+  closeSideNav() {
+    this.isSideNavOpen = false;
   }
 }
