@@ -69,7 +69,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     ...MatModules,
     RouterModule.forRoot(appRoutes, { useHash: true }),
-    environment.production ? ServiceWorkerModule.register('ngsw-worker.js') : [],
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
     GoogleApiModule.forRoot({
       provide: NG_GAPI_CONFIG,
       useValue: environment.gapiClientConfig
