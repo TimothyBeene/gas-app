@@ -6,11 +6,17 @@ import { Directive, HostListener, Input } from '@angular/core';
 export class NumberInputDirective {
 
   @Input() numberPattern: string = '(\\d*)(\\d\\d)$';
+  @Input() ngModel: any;
   constructor() { }
 
   @HostListener('input', ['$event'])
   checkPattern(event) {
-    let input = event.target;
+    if (event.data === '.') {
+      event.srcElement.value = this.ngModel;
+      event.preventDefault();
+      return;
+    }
+    let input = event.srcElement;
     let tempValue = input.value;
     tempValue = tempValue.replace(/\./g, '');
     const regex = new RegExp(this.numberPattern);
@@ -23,7 +29,11 @@ export class NumberInputDirective {
 
   @HostListener('keydown', ['$event'])
   noPeriods(event: KeyboardEvent) {
-    if (/^[a-z|A-Z|\.|\+|-|\*|\\|=|'|"|`|~| |_|,|<|>|\?|-]$/.test(event.key)) {
+    if ( event.key === 'Unidentified' ) {
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    } else if (/^[a-z|A-Z|\.|\+|-|\*|\\|=|'|"|`|~| |_|,|<|>|\?|-]$/.test(event.key)) {
       event.preventDefault();
       event.stopPropagation();
       return;
