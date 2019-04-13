@@ -7,7 +7,7 @@ type GoogleUser = any;
 
 @Injectable()
 export class UserService {
-  public static SESSION_STORAGE_KEY: string = 'accessToken';
+  public static LOCAL_STORAGE_KEY: string = 'accessToken';
   private user: GoogleUser;
 
   isLoggedIn$: Subject<boolean> = new ReplaySubject();
@@ -19,13 +19,13 @@ export class UserService {
   }
 
   public getToken(): string {
-    let token: string = sessionStorage.getItem(UserService.SESSION_STORAGE_KEY);
+    let token: string = localStorage.getItem(UserService.LOCAL_STORAGE_KEY);
     if (!token) {
       this.isLoggedIn$.next(true);
       this.signIn();
       // throw new Error('no token set , authentication required');
     }
-    return sessionStorage.getItem(UserService.SESSION_STORAGE_KEY);
+    return localStorage.getItem(UserService.LOCAL_STORAGE_KEY);
   }
 
   public signIn(): void {
@@ -35,15 +35,15 @@ export class UserService {
       });
   }
   public logout() {
-    sessionStorage.removeItem(UserService.SESSION_STORAGE_KEY);
+    localStorage.removeItem(UserService.LOCAL_STORAGE_KEY);
     this.user = null;
     this.isLoggedIn$.next(false);
   }
 
   private signInSuccessHandler(res: GoogleUser) {
     this.user = res;
-    sessionStorage.setItem(
-      UserService.SESSION_STORAGE_KEY, res.getAuthResponse().access_token
+    localStorage.setItem(
+      UserService.LOCAL_STORAGE_KEY, res.getAuthResponse().access_token
     );
     this.isLoggedIn$.next(true);
   }
